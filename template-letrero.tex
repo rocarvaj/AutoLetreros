@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{rotating}
+
+\renewcommand{\familydefault}{\sfdefault} % Set sans-serif as default
+\usepackage{lmodern} % Optional: Improves font quality
+
+% Configurar la página en orientación horizontal
+\geometry{letterpaper, landscape, margin=0.2cm}
+
+\begin{document}
+
+\pagestyle{empty} % Sin números de página
+
+\noindent
+
+{% for index, row in df.iterrows() %}
+\begin{center}
+    % Nombre rotado
+    \begin{turn}{180}
+        \begin{minipage}{\textwidth}
+            \centering
+    {\fontsize{110}{60}\selectfont {{row['Nombre']}}}\\[6pt]
+    {\fontsize{80}{50}\selectfont {{row['Apellido1']}}}
+       \vspace{0.8cm}
+            
+            % Logo rotado
+                \begin{flushleft}
+        \includegraphics[width=8cm]{uai-negocios-logo-bajada-png.png}
+    \end{flushleft}
+        \end{minipage}
+    \end{turn}
+    
+        
+    % Línea punteada
+\vfill % Pushes everything below to the bottom
+\noindent\rule{\textwidth}{1pt} % Draws a horizontal line across the page
+\vfill % Pushes everything above to the top
+
+    
+    % Nombre en tamaño grande
+    {\fontsize{110}{60}\selectfont {{row['Nombre']}}}\\[6pt]
+    {\fontsize{80}{50}\selectfont {{row['Apellido1']}}}
+       \vspace{0.8cm}
+    
+    % Logo en la parte inferior izquierda
+    \begin{flushleft}
+        \includegraphics[width=8cm]{uai-negocios-logo-bajada-png.png}
+    \end{flushleft}
+\end{center}
+\newpage
+{% endfor %}
+
+\end{document}
